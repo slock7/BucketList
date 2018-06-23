@@ -1,0 +1,26 @@
+﻿@model BucketList.ViewModels.HomeIndexViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <table>
+        @foreach (var bucket in Model.BucketDatas)
+        {
+            <tr>
+                <td>@bucket.Id</td>
+                <td>@bucket.Activity</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@bucket.Id">... More</a>
+                </td>
+            </tr>
+        }
+        
+    </table>
+    <a asp-action="Create">Create bucket list activity</a>
+</body>
+</html>

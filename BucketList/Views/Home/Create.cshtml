@@ -1,0 +1,23 @@
+﻿@using BucketList.Models
+@model BucketData
+
+<h2>Create</h2>
+
+<form method="post">
+    
+    <div>
+        <label asp-for="Activity"></label>
+        <input asp-for="Activity"/>
+        <span asp-validation-for="Activity"></span>
+    </div>
+    
+    <div>
+        <label asp-for="ActivityType"></label>
+        <select asp-for="ActivityType" asp-items="@Html.GetEnumSelectList<ActivityType>()"></select>
+        <span asp-validation-for="ActivityType"></span>
+    </div>
+    
+    <input type="submit" name="save" value="Save" />
+
+</form>
+<div asp-validation-summary="All"></div>
