@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BucketList.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace BucketList.Services
 {
@@ -31,6 +32,14 @@ namespace BucketList.Services
             _context.SaveChanges();
 
             return newActivity;
+        }
+
+        public BucketData Update(BucketData bucket)
+        {
+            _context.Attach(bucket).State = EntityState.Modified;
+            _context.SaveChanges();
+
+            return bucket;
         }
     }
 }

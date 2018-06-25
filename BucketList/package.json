@@ -1,0 +1,11 @@
+{
+  "version": "1.0.0",
+  "name": "bucketlist",
+  "private": true,
+  "devDependencies": {
+  },
+  "dependencies": {
+    "bootstrap"  : "4.1.1"
+  }
+
+}

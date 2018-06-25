@@ -1,0 +1,28 @@
+﻿@page "{id}"
+@using BucketList.Pages.Activities
+
+@model EditModel
+
+<h2>Edit @Model.BucketData.Activity</h2>
+
+<form method="post">
+    
+    <input type="hidden" asp-for="BucketData.Id" />
+
+    <div>
+        <label asp-for="BucketData.Activity"></label>
+        <input asp-for="BucketData.Activity" />
+        <span asp-validation-for="BucketData.Activity"></span>
+    </div>
+
+    <div>
+        <label asp-for="BucketData.ActivityType"></label>
+        <select asp-for="BucketData.ActivityType" asp-items="@Html.GetEnumSelectList<ActivityType>()"></select>
+        <span asp-validation-for="BucketData.ActivityType"></span>
+    </div>
+
+    <input type="submit" name="save" value="Save" />
+</form>
+<div asp-validation-summary="All"></div>
+
+<div><a asp-action="Index" asp-controller="Home">Back to main</a></div>

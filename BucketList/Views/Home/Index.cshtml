@@ -1,6 +1,6 @@
-﻿@model BucketList.ViewModels.HomeIndexViewModel
+﻿@model HomeIndexViewModel
 @{
-    ViewData["Title"] = "Index";
+    ViewBag.Title = "Home Page";
 }
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -8,19 +8,34 @@
     <title></title>
 </head>
 <body>
-    <table>
-        @foreach (var bucket in Model.BucketDatas)
-        {
-            <tr>
-                <td>@bucket.Id</td>
-                <td>@bucket.Activity</td>
-                <td>
-                    <a asp-action="Details" asp-route-id="@bucket.Id">... More</a>
-                </td>
-            </tr>
+    <h2>Bucket List Activities</h2>
+
+    @foreach (var bucket in Model.BucketDatas)
+    {
+        <h3>
+            @bucket.Id
+            @bucket.Activity
+        </h3>
+
+        <div>
+            Activity type: 
+            @bucket.ActivityType
+        </div>
+
+        <div>
+            <a asp-action="Details" asp-route-id="@bucket.Id">...More</a>
+            <a asp-page="/Activities/Edit" asp-route-id="@bucket.Id">...Edit</a>
+        </div>
+    }
+
+    <br />
+    <div><a asp-action="Create">Create bucket list activity</a></div>
+
+    <div>
+        @section footer {
+            <h2>@Model.CurrentMessage</h2>
         }
-        
-    </table>
-    <a asp-action="Create">Create bucket list activity</a>
+    </div>
+
 </body>
 </html>
