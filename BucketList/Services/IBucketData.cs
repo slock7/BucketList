@@ -10,5 +10,6 @@ namespace BucketList.Models
         IEnumerable<BucketData> GetAll();
         BucketData Get(int id);
         BucketData Add(BucketData newActivity);
+        BucketData Update(BucketData bucket);
     }
 }

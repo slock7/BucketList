@@ -14,6 +14,9 @@ namespace BucketList.Controllers
         private IBucketData _bucketData;
         private IGreeter _greeter;
 
+        [BindProperty]
+        public BucketData BucketData1 { get; private set; }
+
         public HomeController(IBucketData bucketData, IGreeter greeter)
         {
             _bucketData = bucketData;
@@ -65,5 +68,6 @@ namespace BucketList.Controllers
                 return View();
             }
         }
+
     }
 }
