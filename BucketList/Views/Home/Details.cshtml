@@ -4,8 +4,21 @@
     ViewBag.Title = Model.Activity + "- Details";
 }
 
-<h1>@Model.Activity</h1>
+<p>
 
-<div>ID: @Model.Id</div>
-<div>Activity Type: @Model.ActivityType</div>
-<div><a asp-action="Index" asp-controller="Home">Index</a></div>
+    <h1>@Model.Activity</h1>
+</p>
+
+<div class="card">
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Description: @Model.Description</li>
+        <li class="list-group-item">Activity Type: @Model.ActivityType</li>
+        <li class="list-group-item">Date Added: @Model.DateAdded.ToLocalTime()</li>
+    </ul>
+
+</div>
+
+<br/>
+<div>
+    <a class="btn btn-success" asp-action="Index" asp-controller="Home">Back to main</a>
+</div>

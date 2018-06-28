@@ -14,9 +14,6 @@ namespace BucketList.Controllers
         private IBucketData _bucketData;
         private IGreeter _greeter;
 
-        [BindProperty]
-        public BucketData BucketData1 { get; private set; }
-
         public HomeController(IBucketData bucketData, IGreeter greeter)
         {
             _bucketData = bucketData;
@@ -58,6 +55,7 @@ namespace BucketList.Controllers
                 var newActivity = new BucketData();
                 newActivity.Activity = model.Activity;
                 newActivity.ActivityType = model.ActivityType;
+                newActivity.DateAdded = DateTime.Now;
 
                 newActivity = _bucketData.Add(newActivity);
 

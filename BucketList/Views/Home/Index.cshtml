@@ -7,29 +7,44 @@
 <head>
     <title></title>
 </head>
+
 <body>
-    <h2>Bucket List Activities</h2>
 
-    @foreach (var bucket in Model.BucketDatas)
-    {
-        <h3>
-            @bucket.Id
-            @bucket.Activity
-        </h3>
+    <p>
+        <img src="~/img/header.jpg" />
+        <h2>Bucket List Activities</h2>
+    </p>
+    <div class="card-group">
 
-        <div>
-            Activity type: 
-            @bucket.ActivityType
-        </div>
+        @foreach (var bucket in Model.BucketDatas)
+        {
 
-        <div>
-            <a asp-action="Details" asp-route-id="@bucket.Id">...More</a>
-            <a asp-page="/Activities/Edit" asp-route-id="@bucket.Id">...Edit</a>
-        </div>
-    }
+            <div class="card bg-light mb-3" style="min-width: 20rem;">
+                <a asp-action="Details" asp-route-id="@bucket.Id">
+                    <img class="card-img-top" src="/img/bg.png" alt="Card image cap" style="min-width: 20rem">
+                </a>
+                <div class="card-body">
+                    <h4 class="card-title">@bucket.Activity</h4>
+                    <p class="card-text">
+                        @bucket.Description
+                        <div>
+                            <a class="btn btn-warning" asp-action="Details" asp-route-id="@bucket.Id"> More </a>
+                            <a class="btn btn-info" asp-page="/Activities/Edit" asp-route-id="@bucket.Id"> Edit </a>
+                        </div>
+                    </p>
+                    <p class="card-text">
+                        <small class="text-muted">
+                            Activity type: @bucket.ActivityType <br />
+                            Added on: @bucket.DateAdded.ToShortDateString()
+                        </small>
+                    </p>
+                </div>
+            </div>
 
+        }
+    </div>
     <br />
-    <div><a asp-action="Create">Create bucket list activity</a></div>
+    <div><a class="btn btn-primary" asp-action="Create">Create bucket list activity</a></div>
 
     <div>
         @section footer {

@@ -10,8 +10,12 @@ namespace BucketList.Models
         [Display(Name = "Activity Name")]
         [Required, MaxLength(80)]
         public string Activity { get; set; }
+
         public ActivityType ActivityType { get; set; }
-        public string Status { get; set; }
-        //public DateTime DateTo { get; set; }
+        public string Description { get; set; }
+        public DateTime DateAdded { get; set; } = DateTime.Now;
+        public string FileName { get; set; }
+        public string AddedBy { get; set; }
+        public int PeopleCount { get; set; }
     }
 }

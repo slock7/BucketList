@@ -43,13 +43,10 @@ namespace BucketList
 
             app.UseStaticFiles();
 
+            app.UseNodeModules(env.ContentRootPath);
+
             app.UseMvc(ConfigureRoutes);
 
-            app.Run(async (context) =>
-            {
-                var greeting = greeter.GetMessageOfTheDay();
-                await context.Response.WriteAsync(greeting);
-            });
         }
 
         private void ConfigureRoutes(IRouteBuilder routeBuilder)

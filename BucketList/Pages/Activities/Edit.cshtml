@@ -3,26 +3,40 @@
 
 @model EditModel
 
-<h2>Edit @Model.BucketData.Activity</h2>
+<p>
+    <h2>Edit @Model.BucketData.Activity</h2>
+</p>
 
 <form method="post">
-    
-    <input type="hidden" asp-for="BucketData.Id" />
+    <div class="form-group">
+        <input type="hidden" asp-for="BucketData.Id" />
+        <input asp-for=BucketData.DateAdded />
 
-    <div>
-        <label asp-for="BucketData.Activity"></label>
-        <input asp-for="BucketData.Activity" />
-        <span asp-validation-for="BucketData.Activity"></span>
+        <br />
+
+        <div class="form-group">
+            <label asp-for="BucketData.Activity"></label>
+            <input class="form-control" asp-for="BucketData.Activity" />
+            <span asp-validation-for="BucketData.Activity"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="BucketData.Description"></label>
+            <input class="form-control" asp-for="BucketData.Description" />
+            <span asp-validation-for="BucketData.Description"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="BucketData.ActivityType"></label>
+            <select class="custom-select" asp-for="BucketData.ActivityType" asp-items="@Html.GetEnumSelectList<ActivityType>()"></select>
+            <span asp-validation-for="BucketData.ActivityType"></span>
+        </div>
+
+        <input type="submit" class="btn btn-primary" name="save" value="Save" />
     </div>
-
-    <div>
-        <label asp-for="BucketData.ActivityType"></label>
-        <select asp-for="BucketData.ActivityType" asp-items="@Html.GetEnumSelectList<ActivityType>()"></select>
-        <span asp-validation-for="BucketData.ActivityType"></span>
-    </div>
-
-    <input type="submit" name="save" value="Save" />
 </form>
 <div asp-validation-summary="All"></div>
 
-<div><a asp-action="Index" asp-controller="Home">Back to main</a></div>
+<div>
+    <a class="btn btn-success" asp-action="Index" asp-controller="Home">Back to main</a>
+</div>
